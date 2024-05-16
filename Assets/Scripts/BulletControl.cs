@@ -14,13 +14,18 @@ public class BulletControl : MonoBehaviour
     {
         Vector3 movement = new Vector2(1 * speed, 0f);
         transform.Translate(movement * Time.deltaTime);
+
+        if (transform.position.x > 10f || transform.position.x < -10f || transform.position.y > 10f || transform.position.y < -10f)
+        {
+            Destroy(gameObject);
+        }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         if (collision.gameObject.tag == ChoiceEnemy.ToString() || collision.gameObject.tag == "Wall")
         {
-            Destroy(gameObject);   
+            Destroy(gameObject);
         }
     }
 }
